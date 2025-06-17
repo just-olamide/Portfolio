@@ -1,0 +1,2395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <div id="app">
+        <nav-bar></nav-bar>
+        <router-view></router-view>
+        <footer-section></footer-section>
+        <div id="watermark-cursor" class="watermark-cursor"></div>
+    </div>
+
+    <script type="module">
+        const { createApp } = Vue;
+
+        // Vue Router Setup
+        const Home = {
+            template: `
+                <div class="single-page">
+                    <!-- Home Section -->
+                    <section id="home" class="section home-section min-vh-100 d-flex align-items-center px-3">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 text-center text-lg-start">
+                                    <h1 class="display-3 fw-bold mb-4 animate_animated animate_fadeInLeft">
+                                        <span class="rotating-text theme-text">{{ currentText }}</span>
+                                    </h1>
+                                    <p class="lead mb-4 animate_animated animatefadeInLeft animate_delay-1s theme-text-secondary">I'm a passionate developer creating innovative solutions.</p>
+                                    <a href="#projects" class="btn btn-primary btn-lg animate_animated animatepulse animate_infinite">View My Work</a>
+                                </div>
+                                <div class="col-lg-6  d-lg-block">
+                                    <div class="floating-images-container">
+                                        <div class="floating-image image1">
+                                            <div class="image-wrapper">
+                                                <img src="images/zaynab.jpg" alt="zaynab" class="img-fluid">
+                                                <div class="name-tag">Lawal Zaynab</div>
+                                            </div>
+                                        </div>
+                                        <div class="floating-image image2">
+                                            <div class="image-wrapper">
+                                                <img src="images/second.jpg" alt="Ayomide" class="img-fluid">
+                                                <div class="name-tag">Ayomide</div>
+                                            </div>
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- About Section -->
+                    <section id="about" class="section min-vh-100 bg-white d-flex flex-column align-items-center py-5 px-3">
+                        <div class="text-center mb-5">
+                            <div class="skills-logo mb-3 animate_animated animate_bounceIn">
+                                <i class="fas fa-user-circle fa-4x text-primary"></i>
+                            </div>
+                            <h2 class="display-4 fw-bold theme-text mb-4 animate_animated animate_fadeInDown">About Me</h2>
+                        </div>
+                        <div class="container">
+                            <div class="card shadow-lg animate_animated animate_fadeInUp">
+                                <div class="row g-0">
+                                    <!-- Image Column (30%) -->
+                                    <div class="col-md-4">
+                                        <div class="card h-100 border-0">
+                                            <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                                                <img src="images/about.jpg" alt="Quadri Yusuff" class="img-fluid mb-4" style="max-width: 250px; height: auto;">
+                                                <a href="documents/My_CV.pdf" class="btn btn-primary btn-lg w-70 animate_animated animatepulse animate_infinite" target="_blank" download="Quadri_Yusuff_CV.pdf">
+                                                    <i class="fas fa-file-download me-2"></i>Download Resume
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Content Column (70%) -->
+                                    <div class="col-md-8">
+                                        <div class="card-body p-4">
+                                            <div class="about-content">
+                                                <p class="fs-5 theme-text-secondary mb-4 animate_animated animatefadeInUp animate_delay-1s">
+                                                    <i class="fas fa-user-circle fa-2x me-2 text-primary"></i>
+                                                    I'm a dedicated web developer with a passion for creating innovative and user-friendly applications.
+                                                </p>
+                                                <p class="fs-5 theme-text-secondary mb-4 animate_animated animatefadeInUp animate_delay-2s">
+                                                    <i class="fas fa-code fa-2x me-2 text-primary"></i>
+                                                    With expertise in modern web technologies, I focus on delivering high-quality, scalable solutions.
+                                                </p>
+                                                <p class="fs-5 theme-text-secondary mb-4 animate_animated animatefadeInUp animate_delay-3s">
+                                                    <i class="fas fa-bullseye fa-2x me-2 text-primary"></i>
+                                                    My goal is to build seamless experiences that make a positive impact.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Skills Section -->
+                    <section id="skills" class="section min-vh-100 bg-light d-flex flex-column align-items-center py-5 px-3">
+                        <div class="text-center mb-5">
+                            <div class="skills-logo mb-3 animate_animated animate_bounceIn">
+                                <i class="fas fa-laptop-code fa-4x text-primary"></i>
+                            </div>
+                            <h2 class="display-4 fw-bold theme-text mb-4 animate_animated animate_fadeInDown">My Skills</h2>
+                        </div>
+                        <div class="container col-md-10">
+                            <div class="skills-carousel-wrapper">
+                                <div class="skills-carousel">
+                                    <div v-for="skill in skills" :key="skill.id" class="skill-card">
+                                        <div class="card shadow-lg text-center">
+                                            <div class="card-body">
+                                                <i :class="skill.icon" class="fa-3x mb-3 text-primary"></i>
+                                                <h4 class="card-title fs-5">{{ skill.name }}</h4>
+                                                <p class="card-text text-muted">{{ skill.description }}</p>
+                                                <div class="skill-details">
+                                                    <button class="close-tooltip" @click="closeTooltip">&times;</button>
+                                                    <h5>Key Features</h5>
+                                                    <ul>
+                                                        <li v-for="(feature, index) in skill.features" :key="index">
+                                                            <i class="fas fa-check-circle"></i>
+                                                            {{ feature }}
+                                                        </li>
+                                                    </ul>
+                                                    <div class="experience">
+                                                        <i class="fas fa-clock me-2"></i>
+                                                        {{ skill.experience }}
+                                                    </div>
+                                                </div>
+                                                <div class="tooltip-overlay"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Projects Section -->
+                    <section id="projects" class="section min-vh-100 bg-white py-5 px-3">
+                        <h2 class="display-4 fw-bold theme-text text-center mb-5 animate_animated animate_fadeIn">My Projects</h2>
+                        <div class="container">
+                            <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div v-for="(project, index) in projects" :key="project.id" :class="['carousel-item', { active: index === 0 }]">
+                                        <div class="card mx-auto shadow-lg" style="max-width: 600px;">
+                                            <img :src="project.image" :alt="project.title" class="card-img-top" style="height: 300px; object-fit: cover;">
+                                            <div class="card-body text-center">
+                                                <h3 class="card-title fs-4">{{ project.title }}</h3>
+                                                <p class="card-text text-muted">{{ project.description }}</p>
+                                                <a :href="project.link" class="btn btn-outline-primary">
+                                                    View Project <i class="fas fa-arrow-right ms-2"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contact Section -->
+                    <section id="contact" class="section min-vh-100 bg-light d-flex flex-column align-items-center py-5 px-3">
+                        <h2 class="display-4 fw-bold theme-text mb-4 animate_animated animate_fadeInDown">Contact Me</h2>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <!-- Contact Form Card -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="card shadow-lg animate_animated animate_fadeInLeft h-100">
+                                        <div class="card-body p-4">
+                                            <h3 class="card-title text-center mb-4">Send me a message</h3>
+                                            <div class="mb-3">
+                                                <label class="form-label theme-text"><i class="fas fa-user me-2"></i>Name</label>
+                                                <input v-model="form.name" type="text" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label theme-text"><i class="fas fa-envelope me-2"></i>Email</label>
+                                                <input v-model="form.email" type="email" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label theme-text"><i class="fas fa-comment me-2"></i>Message</label>
+                                                <textarea v-model="form.message" class="form-control" rows="5"></textarea>
+                                            </div>
+                                            <button @click="submitForm" class="btn btn-primary btn-lg w-100 animate_animated animatepulse animate_infinite">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social Media Links -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="card shadow-lg h-100 animate_animated animate_fadeInRight">
+                                        <div class="card-body p-4">
+                                            <h3 class="card-title text-center mb-4">Let's Connect</h3>
+                                            <div class="social-links">
+                                                <a href="https://x.com/Ayomidespenz" class="social-link twitter" target="_blank">
+                                                    <i class="fab fa-twitter"></i>
+                                                    <span>Twitter</span>
+                                                </a>
+                                                <a href="https://linkedin.com/in/quadri-yusuff-adisa" class="social-link linkedin" target="_blank">
+                                                    <i class="fab fa-linkedin"></i>
+                                                    <span>LinkedIn</span>
+                                                </a>
+                                                <a href="https://github.com/Ayomidespenz" class="social-link github" target="_blank">
+                                                    <i class="fab fa-github"></i>
+                                                    <span>GitHub</span>
+                                                </a>
+                                                <a href="https://medium.com/@quadriyusuff721" class="social-link medium" target="_blank">
+                                                    <i class="fab fa-medium"></i>
+                                                    <span>Medium</span>
+                                                </a>
+                                                <a href="https://instagram.com/your_instagram" class="social-link instagram" target="_blank">
+                                                    <i class="fab fa-instagram"></i>
+                                                    <span>Instagram</span>
+                                                </a>
+                                                <a href="mailto:quadriyusuff721@gmail.com" class="social-link email">
+                                                    <i class="fas fa-envelope"></i>
+                                                    <span>Email</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `,
+            data() {
+                return {
+                    texts: [ "Hi !! I'm Quadri Yusuff",
+                    "Full stack Developer & Web 3 Enthusiast",
+                        "Crafting Digital Experiences",
+            
+                        "Turning Ideas Into Reality",
+                        "Building Modern Web Solutions",
+                        "Passionate About Clean Code"
+                    ],
+                    currentText: "",
+                    currentIndex: 0,
+                    skills: [
+                        {
+                            id: 1,
+                            name: 'HTML',
+                            description: 'Crafting semantic and accessible web structures.',
+                            icon: 'fab fa-html5',
+                            features: [
+                                'Semantic HTML5 elements',
+                                'Accessibility (ARIA)',
+                                'SEO optimization',
+                                'Form validation'
+                            ],
+                            experience: '2+ years of experience in creating responsive and accessible web structures'
+                        },
+                        {
+                            id: 2,
+                            name: 'CSS',
+                            description: 'Styling responsive and visually appealing interfaces.',
+                            icon: 'fab fa-css3-alt',
+                            features: [
+                                'Flexbox and Grid layouts',
+                                'CSS animations',
+                                'Responsive design',
+                                'CSS preprocessors (SASS)'
+                            ],
+                            experience: '2+ years of experience in modern CSS techniques and responsive design'
+                        },
+                        {
+                            id: 3,
+                            name: 'JavaScript',
+                            description: 'Building interactive and dynamic web applications.',
+                            icon: 'fab fa-js-square',
+                            features: [
+                                'ES6+ features',
+                                'DOM manipulation',
+                                'Async programming',
+                                'API integration'
+                            ],
+                            experience: '2+ years of experience in modern JavaScript development'
+                        },
+                        {
+                            id: 4,
+                            name: 'Git/GitHub',
+                            description: 'Version control and collaborative development.',
+                            icon: 'fab fa-git-alt',
+                            features: [
+                                'Branch management',
+                                'Pull requests',
+                                'Code review',
+                                'CI/CD integration'
+                            ],
+                            experience: '2+ years of experience in version control and team collaboration'
+                        },
+                        {
+                            id: 5,
+                            name: 'Bootstrap',
+                            description: 'Creating responsive layouts with a robust framework.',
+                            icon: 'fab fa-bootstrap',
+                            features: [
+                                'Grid system',
+                                'Component customization',
+                                'Responsive utilities',
+                                'JavaScript plugins'
+                            ],
+                            experience: '2+ years of experience in Bootstrap development'
+                        },
+                        {
+                            id: 6,
+                            name: 'Vue.js',
+                            description: 'Developing reactive and component-driven applications.',
+                            icon: 'fab fa-vuejs',
+                            features: [
+                                'Component architecture',
+                                'Vuex state management',
+                                'Vue Router',
+                                'Composition API'
+                            ],
+                            experience: '1+ year of experience in Vue.js development'
+                        },
+                        {
+                            id: 7,
+                            name: 'PHP',
+                            description: 'Server-side scripting and web development.',
+                            icon: 'fab fa-php',
+                            features: [
+                                'Object-Oriented Programming',
+                                'MVC Architecture',
+                                'RESTful APIs',
+                                'Database Integration'
+                            ],
+                            experience: '1+ year of experience in PHP development'
+                        },
+                        {
+                            id: 8,
+                            name: 'Laravel',
+                            description: 'Building robust and scalable web applications.',
+                            icon: 'fab fa-laravel',
+                            features: [
+                                'Eloquent ORM',
+                                'Blade Templating',
+                                'Artisan CLI',
+                                'Middleware & Authentication'
+                            ],
+                            experience: '1+ year of experience in Laravel framework'
+                        },
+                        {
+                            id: 9,
+                            name: 'MySQL',
+                            description: 'Managing and optimizing database systems.',
+                            icon: 'fas fa-database',
+                            features: [
+                                'Database Design',
+                                'Query Optimization',
+                                'Stored Procedures',
+                                'Data Security'
+                            ],
+                            experience: '1+ year of experience in MySQL database management'
+                        }
+                    ],
+                    projects: [
+                        { id: 1, title: 'E-Commerce Platform', description: 'A fully responsive online store built with HTML, CSS, and Vanilla Js.', image: 'images/img.png', link: 'https://storied-babka-0e6b53.netlify.app/' },
+                        { id: 2, title: 'Space Tourism App', description: 'A productivity app with real-time collaboration features.', image: 'images/space.png', link: 'https://space-vue-o8bw.vercel.app/' },
+                        { id: 3, title: 'Math Quiz App', description: 'A modern Math Quiz website showcasing my work.', image: 'images/math.png', link: 'https://polite-gnome-f7ac8a.netlify.app/' },
+                        { id: 4, title: 'Advice Generator Web', description: 'A modern Advice Generator website showcasing my work.', image: 'images/advice.png', link: 'https://luxury-caramel-10be6d.netlify.app/' }
+                    ],
+                    form: {
+                        name: '',
+                        email: '',
+                        message: ''
+                    }
+                }
+            },
+            methods: {
+                rotateText() {
+                    this.currentText = this.texts[this.currentIndex];
+                    this.currentIndex = (this.currentIndex + 1) % this.texts.length;
+                },
+                submitForm() {
+                    alert('Form submitted successfully');
+                    this.form = { name: '', email: '', message: '' };
+                },
+                closeTooltip(event) {
+                    const tooltip = event.target.closest('.skill-details');
+                    const overlay = tooltip.nextElementSibling;
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                    if (overlay) {
+                        overlay.style.display = 'none';
+                    }
+                }
+            },
+            mounted() {
+                this.rotateText();
+                setInterval(this.rotateText, 3000);
+            }
+        };
+
+        // NavBar Component
+        const NavBar = {
+            template: `
+                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+                    <div class="container">
+                        <a class="navbar-brand fw-bold animate_animated animate_fadeIn" href="#home">
+                            <i class="fas fa-code fa-lg me-2 text-primary"></i>Portfolio
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link animate_animated animatefadeIn animate_delay-1s" href="#home"><i class="fas fa-home me-1"></i>Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link animate_animated animatefadeIn animate_delay-2s" href="#about"><i class="fas fa-user me-1"></i>About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link animate_animated animatefadeIn animate_delay-3s" href="#skills"><i class="fas fa-tools me-1"></i>Skills</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link animate_animated animatefadeIn animate_delay-4s" href="#projects"><i class="fas fa-project-diagram me-1"></i>Projects</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link animate_animated animatefadeIn animate_delay-5s" href="#contact"><i class="fas fa-envelope me-1"></i>Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link animate_animated animatefadeIn animate_delay-5s" href="#about" target="_blank" download="Quadri_Yusuff_CV.pdf">
+                                        <i class="fas fa-file-download me-1"></i>CV
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="btn btn-link nav-link animate_animated animatefadeIn animate_delay-5s" @click="toggleTheme">
+                                        <i :class="themeIcon"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            `,
+            data() {
+                return {
+                    isDarkMode: false
+                }
+            },
+            computed: {
+                themeIcon() {
+                    return this.isDarkMode ? 'fas fa-sun' : 'fas fa-moon'
+                }
+            },
+            methods: {
+                toggleTheme() {
+                    this.isDarkMode = !this.isDarkMode;
+                    document.body.classList.toggle('dark-theme');
+                    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+                }
+            },
+            mounted() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    this.isDarkMode = true;
+                    document.body.classList.add('dark-theme');
+                }
+            }
+        };
+
+        // Footer Component
+        const FooterSection = {
+            template: `
+                <footer class="bg-dark text-white text-center py-4 animate_animated animate_fadeInUp">
+                    <p class="mb-2">© 2025 Quadri Yusuff. All rights reserved.</p>
+                </footer>
+            `
+        };
+
+        // Vue Router
+        const routes = [
+            { path: '/', component: Home },
+            { path: '/:pathMatch(.)', redirect: '/' }
+        ];
+
+        const router = VueRouter.createRouter({
+            history: VueRouter.createWebHashHistory(),
+            routes
+        });
+
+        // App Setup
+        const app = createApp({
+            components: {
+                NavBar,
+                FooterSection
+            }
+        });
+
+        app.use(router);
+        app.mount('#app');
+
+        // Watermark Cursor Logic
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('watermark-cursor');
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        // Add smooth scroll behavior
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* Base Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .display-3 {
+                font-size: 2.8rem;
+            }
+            
+            .display-4 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .container {
+                max-width: 720px;
+            }
+
+            .display-3 {
+                font-size: 2.5rem;
+            }
+
+            .display-4 {
+                font-size: 2rem;
+            }
+
+            .lead {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .navbar-collapse {
+                /* background: var(--bs-light); */
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 10px;
+                position: absolute;
+                top: 100%;
+                right: 15px;
+                left: auto;
+                width: 250px;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-theme .navbar-collapse {
+                background: #2d2d2d;
+            }
+
+            .nav-link {
+                padding: 8px 15px;
+                display: block;
+                text-align: left;
+            }
+
+            .navbar-nav {
+                margin-top: 0;
+            }
+
+            .navbar-toggler {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+            }
+
+            .display-3 {
+                font-size: 2.2rem;
+            }
+
+            .display-4 {
+                font-size: 1.8rem;
+            }
+
+            .lead {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .btn-lg {
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+            }
+
+            .skills-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .skills-logo i {
+                font-size: 2.5rem;
+            }
+
+            .floating-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .name-tag {
+                font-size: 0.9rem;
+                /* border: 2px solid red; */
+                padding: 3px 10px;
+            }
+               .home-section {
+            background: linear-gradient(45deg, #444, #4ecdc4, #45b7d1, #96c93d);
+            background-size: 300% 300%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            margin-top: 55px;
+            z-index: -1000;
+            /* bottom: 200px; */
+        /* top: -500px; */
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+    
+        }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+
+            .display-3 {
+                font-size: 1.8rem;
+            }
+
+            .display-4 {
+                font-size: 1.5rem;
+            }
+
+            .lead {
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 30px 0;
+            }
+
+            .btn-lg {
+                font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-text {
+                font-size: 0.85rem;
+            }
+
+            .form-control {
+                font-size: 0.85rem;
+            }
+
+            .skills-logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .skills-logo i {
+                font-size: 2rem;
+            }
+
+            .floating-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .name-tag {
+                font-size: 0.8rem;
+                padding: 2px 8px;
+            }
+
+            .social-link {
+                padding: 0.8rem;
+            }
+
+            .social-link i {
+                font-size: 1.1rem;
+            }
+
+            .social-link span {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .display-3 {
+                font-size: 1.5rem;
+            }
+
+            .display-4 {
+                font-size: 1.3rem;
+            }
+
+            .lead {
+                font-size: 0.85rem;
+            }
+
+            .btn-lg {
+                font-size: 0.85rem;
+                padding: 0.35rem 0.9rem;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+
+            .card-text {
+                font-size: 0.8rem;
+            }
+
+            .form-control {
+                font-size: 0.8rem;
+            }
+
+            .skills-logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .skills-logo i {
+                font-size: 1.8rem;
+            }
+
+            .floating-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .name-tag {
+                font-size: 0.75rem;
+                padding: 2px 6px;
+            }
+        }
+
+        /* Fix for iOS viewport height */
+        @supports (-webkit-touch-callout: none) {
+            .min-vh-100 {
+                min-height: -webkit-fill-available;
+            }
+        }
+
+        /* Base Responsive Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .display-3 {
+                font-size: 1.0rem;
+                
+            }
+           
+            .display-4 {
+                font-size: 2rem;
+            }
+            .lead {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Home Section Responsive */
+        .home-section {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d);
+            background-size: 300% 300%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+        
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+    
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Dark theme gradient */
+        .dark-theme .home-section {
+            background: linear-gradient(45deg, #2c3e50, #3498db, #2980b9, #1abc9c);
+            background-size: 300% 300%;
+        }
+
+        /* Remove the overlay since we don't need it anymore */
+        .home-section::before {
+            display: none;
+        }
+
+        /* Ensure content stays visible */
+        .home-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Adjust text colors for better visibility on gradient */
+        .home-section .theme-text {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-section .theme-text-secondary {
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Keep floating images above the gradient */
+        .floating-images-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Responsive adjustments for background */
+        @media (max-width: 768px) {
+            .home-section {
+                /* border: 4px solid red; */
+                background-position: center;
+                padding: 60px 0;
+                background-attachment: scroll; /* Better performance on mobile */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .home-section {
+                background-position: center;
+                padding: 40px 0;
+            }
+        }
+
+        
+
+        /* About Section Responsive */
+        @media (max-width: 768px) {
+            .col-md-8 {
+                padding: 0 15px;
+            }
+        }
+
+        /* Skills Section Responsive */
+        .skills-carousel-wrapper {
+            overflow: visible;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .skills-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .skill-card {
+            flex: 0 0 300px;
+            padding: 10px;
+        }
+
+        .skill-card .card {
+            height: 100%;
+            position: relative;
+        }
+
+        /* Remove the slide animation */
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Remove hover pause */
+        .skills-carousel:hover {
+            animation-play-state: running;
+        }
+
+        /* Projects Section Responsive */
+        @media (max-width: 768px) {
+            .carousel-item .card {
+                margin: 0 15px;
+            }
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Contact Section Responsive */
+        @media (max-width: 768px) {
+            .col-md-6 {
+                padding: 0 15px;
+            }
+        }
+
+        /* Navbar Responsive */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                /* background: #ffffff92; */
+                padding: 15px;
+                border-radius: 8px;
+                margin-top: 10px;
+                position: absolute;
+                top: 100%;
+                right: 15px;
+                left: auto;
+                width: 200px;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-theme .navbar-collapse {
+                background: #2d2d2d;
+            }
+
+            .nav-link {
+                padding: 8px 15px;
+                display: block;
+                text-align: left;
+            }
+
+            .navbar-nav {
+                margin-top: 0;
+            }
+
+            .navbar-toggler {
+                margin-left: auto;
+            }
+        }
+
+        /* Ensure navbar doesn't overlap home section */
+        .navbar {
+            z-index: 1030;
+        }
+
+        .home-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 576px) {
+            footer .d-flex {
+                flex-direction: column;
+                gap: 10px;
+            }
+             .navbar-collapse{
+                width: 150px;
+                background: #ffffff92; 
+                /* height: 80vh; */
+             }
+        }
+
+        /* Theme-aware Text Responsive */
+        @media (max-width: 768px) {
+            .theme-text {
+                font-size: 1.8rem;
+            }
+
+            .theme-text-secondary {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Floating Images Responsive */
+        @media (max-width: 576px) {
+            .floating-images-container {
+                height: 250px;
+            }
+
+            .floating-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .name-tag {
+                font-size: 0.9rem;
+                padding: 3px 10px;
+            }
+        }
+
+        /* Skills Logo Responsive */
+        @media (max-width: 768px) {
+            .skills-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .skills-logo i {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Carousel Controls Responsive */
+        @media (max-width: 576px) {
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        /* Form Controls Responsive */
+        @media (max-width: 576px) {
+            .form-control {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            .btn-lg {
+                width: 100%;
+            }
+        }
+
+        /* Section Spacing Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 0;
+            }
+
+            .min-vh-100 {
+                min-height: auto !important;
+            }
+        }
+
+        /* Dark Theme Responsive Adjustments */
+        @media (max-width: 768px) {
+            .dark-theme .navbar-collapse {
+                background: #2d2d2d;
+            }
+
+            .dark-theme .nav-link {
+                color: #ffffff !important;
+            }
+        }
+
+        /* Add smooth transitions for responsive changes */
+        * {
+            transition: all 0.3s ease;
+        }
+
+        /* Snake-like Cursor Movement */
+        .watermark-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(0, 123, 255, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, rgba(0, 123, 255, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999;
+            transition: transform 0.1s ease;
+        }
+
+        /* Skills Card Tooltip Styling */
+        .skill-card {
+            position: relative;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-details {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            margin-bottom: 10px;
+        }
+
+        .skill-card:hover .skill-details {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .skill-details::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid #ffffff;
+        }
+
+        .dark-theme .skill-details {
+            background: #2d2d2d;
+            color: #ffffff;
+        }
+
+        .dark-theme .skill-details::after {
+            border-top-color: #2d2d2d;
+        }
+
+        .skill-details h5 {
+            color: #0d6efd;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 5px;
+        }
+
+        .dark-theme .skill-details h5 {
+            color: #4dabf7;
+            border-bottom-color: #4dabf7;
+        }
+
+        .skill-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+
+        .skill-details li {
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .skill-details li i {
+            margin-right: 8px;
+            color: #0d6efd;
+            font-size: 0.8rem;
+        }
+
+        .dark-theme .skill-details li i {
+            color: #4dabf7;
+        }
+
+        .skill-details .experience {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .dark-theme .skill-details .experience {
+            color: #aaa;
+            border-top-color: #444;
+        }
+
+        /* Smooth Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Hover Effect for Cards */
+        .card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Skills Carousel Styling */
+        .skills-carousel-wrapper {
+            overflow: visible;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .skills-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .skill-card {
+            flex: 0 0 300px;
+            padding: 10px;
+        }
+
+        .skill-card .card {
+            height: 100%;
+            position: relative;
+        }
+
+        /* Remove the slide animation */
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-300px * 6)); /* Slide by the width of original 6 skills */
+            }
+        }
+
+        /* Pause animation on hover */
+        .skills-carousel:hover {
+            animation-play-state: paused;
+        }
+
+        /* Home Section Styles */
+        .home-section {
+            background-color: #f8f9fa;
+            position: relative;
+        }
+
+        .developer-image-container {
+            position: relative;
+            padding: 20px;
+            max-width: 400px; /* Limit the width */
+            margin: 0 auto; /* Center the container */
+        }
+
+        .developer-image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Custom bounce animation */
+        @keyframes customBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .developer-image-container {
+            animation: customBounce 2s ease-in-out infinite;
+        }
+
+        /* Dark Theme Styles */
+        .dark-theme {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .dark-theme .navbar {
+            background-color: #2d2d2d !important;
+            border-bottom: 1px solid #404040;
+        }
+
+        .dark-theme .navbar-light .navbar-brand,
+        .dark-theme .navbar-light .nav-link {
+            color: #ffffff !important;
+        }
+
+        .dark-theme .navbar-light .navbar-toggler {
+            background-color: #404040;
+            border-color: #404040;
+        }
+
+        .dark-theme .card {
+            background-color: #2d2d2d;
+            border-color: #404040;
+        }
+
+        .dark-theme .text-dark {
+            color: #ffffff !important;
+        }
+
+        .dark-theme .text-muted {
+            color: #a0a0a0 !important;
+        }
+
+        .dark-theme .bg-light {
+            background-color: #2d2d2d !important;
+        }
+
+        .dark-theme .bg-white {
+            background-color: #2d2d2d !important;
+        }
+
+        .dark-theme .form-control,
+        .dark-theme .form-select {
+            background-color: #404040;
+            border-color: #505050;
+            color: #ffffff;
+        }
+
+        .dark-theme .form-control:focus,
+        .dark-theme .form-select:focus {
+            background-color: #404040;
+            border-color: #0d6efd;
+            color: #ffffff;
+        }
+
+        .dark-theme .btn-outline-primary {
+            color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .dark-theme .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: #ffffff;
+        }
+
+        .dark-theme .table {
+            color: #ffffff;
+        }
+
+        .dark-theme .table-bordered {
+            border-color: #404040;
+        }
+
+        .dark-theme .table-bordered td,
+        .dark-theme .table-bordered th {
+            border-color: #404040;
+        }
+
+        .dark-theme .shadow-sm {
+            box-shadow: 0 .125rem .25rem rgba(255, 255, 255, 0.075) !important;
+        }
+
+        .dark-theme .shadow-lg {
+            box-shadow: 0 .5rem 1rem rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Theme Toggle Button */
+        .btn-link {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-theme .btn-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Floating Images Container */
+        .floating-images-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        .floating-image {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            animation: borderBlink 2s infinite;
+        }
+
+        .name-tag {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .image1 {
+            top: 50px;
+            left: 50px;
+            animation: float1 6s ease-in-out infinite;
+        }
+
+        .image2 {
+            top: 100px;
+            right: 50px;
+            animation: float2 8s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, -60px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-50px, -30px) rotate(270deg);
+            }
+        }
+
+        @keyframes float2 {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(-50px, -30px) rotate(-90deg);
+            }
+            50% {
+                transform: translate(0, -60px) rotate(-180deg);
+            }
+            75% {
+                transform: translate(50px, -30px) rotate(-270deg);
+            }
+        }
+
+        @keyframes borderBlink {
+            0%, 100% {
+                border-color: #ff0000;
+            }
+            25% {
+                border-color: #00ff00;
+            }
+            50% {
+                border-color: #0000ff;
+            }
+            75% {
+                border-color: #ffff00;
+            }
+        }
+
+        /* Dark theme adjustments for floating images */
+        .dark-theme .name-tag {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Skills Logo Styling */
+        .skills-logo {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skills-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .dark-theme .skills-logo {
+            background: linear-gradient(45deg, #2d2d2d, #404040);
+        }
+
+        /* Theme-aware Text Styling */
+        .theme-text {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .theme-text-secondary {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .theme-text {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        .dark-theme .theme-text-secondary {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        /* Update other text colors */
+        .card-title, .card-text, .form-label, .lead, p {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .card-title,
+        .dark-theme .card-text,
+        .dark-theme .form-label,
+        .dark-theme .lead,
+        .dark-theme p {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        /* Update navbar text colors */
+        .navbar-light .navbar-brand,
+        .navbar-light .nav-link {
+            color: #000000 !important; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .navbar-light .navbar-brand,
+        .dark-theme .navbar-light .nav-link {
+            color: #ffffff !important; /* White color for dark mode */
+        }
+
+        /* Update footer text colors */
+        footer {
+            color: #ffffff; /* Keep footer text white as it has dark background */
+        }
+
+        footer a {
+            color: #ffffff !important; /* Keep footer links white as it has dark background */
+        }
+
+        /* Update form control text colors */
+        .form-control {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .form-control {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        /* Update button text colors */
+        .btn-outline-primary {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .btn-outline-primary {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        /* Update carousel text colors */
+        .carousel-item .card-title,
+        .carousel-item .card-text {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .carousel-item .card-title,
+        .dark-theme .carousel-item .card-text {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        /* Update skills section text colors */
+        .skill-details h5,
+        .skill-details li,
+        .skill-details .experience {
+            color: #000000; /* Black color for light mode */
+            transition: color 0.3s ease;
+        }
+
+        .dark-theme .skill-details h5,
+        .dark-theme .skill-details li,
+        .dark-theme .skill-details .experience {
+            color: #ffffff; /* White color for dark mode */
+        }
+
+        /* Update home section text colors */
+        .home-section .theme-text,
+        .home-section .theme-text-secondary {
+            color: #000000; /* Black color for light mode */
+            text-shadow: none; /* Remove text shadow for better visibility */
+        }
+
+        .dark-theme .home-section .theme-text,
+        .dark-theme .home-section .theme-text-secondary {
+            color: #ffffff; /* White color for dark mode */
+            text-shadow: none; /* Remove text shadow for better visibility */
+        }
+
+        /* Rotating Text Animation */
+        .rotating-text {
+            display: inline-block;
+            min-height: 1.2em;
+            animation: fadeInOut 3s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            20%, 80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            scroll-margin-top: 76px; /* Height of navbar */
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Carousel Controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+        }
+
+        .carousel-control-prev {
+            left: 20px;
+        }
+
+        .carousel-control-next {
+            right: 20px;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .dark-theme .carousel-control-prev,
+        .dark-theme .carousel-control-next {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .dark-theme .carousel-control-prev:hover,
+        .dark-theme .carousel-control-next:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Images and Content */
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Home Section Images */
+        .floating-images-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .floating-image {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid transparent;
+        }
+
+        /* Project Images */
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            .floating-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .floating-images-container {
+                height: auto;
+                padding: 20px 0;
+            }
+
+            .floating-image {
+                width: 160px;
+                height: 160px;
+            }
+
+            .carousel-item img{
+            height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .floating-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .carousel-item img {
+                height: 200px;
+            }
+
+            .name-tag {
+                font-size: 0.9rem;
+                padding: 3px 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .floating-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .carousel-item img {
+                height: 180px;
+            }
+
+            .name-tag {
+                font-size: 0.8rem;
+                padding: 2px 8px;
+            }
+        }
+
+        /* Container Responsive */
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        /* Section Spacing */
+        .section {
+            padding: 80px 0;
+        }
+
+        @media (max-width: 991px) {
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 0;
+            }
+        }
+
+        /* Card Responsive */
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-text {
+            flex: 1;
+        }
+
+        /* Skills Grid Responsive */
+        .skills-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .skills-carousel {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .skills-carousel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Project Carousel Responsive */
+        .carousel-item .card {
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item .card {
+                max-width: 100%;
+                margin: 0 15px;
+            }
+        }
+
+        /* Form Responsive */
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 576px) {
+            .form-control {
+                font-size: 16px;
+            }
+
+            .btn-lg {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        /* Animation Adjustments for Mobile */
+        @media (max-width: 768px) {
+            .animate__animated {
+                animation-duration: 0.8s !important;
+            }
+        }
+
+        /* Fix for iOS viewport height */
+        @supports (-webkit-touch-callout: none) {
+            .min-vh-100 {
+                min-height: -webkit-fill-available;
+            }
+        }
+
+        /* Social Links Styling */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #000000;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            margin-bottom: 0.5rem;
+        }
+
+        .dark-theme .social-link {
+            color: #ffffff;
+            background: #2d2d2d;
+        }
+
+        .social-link:hover {
+            transform: translateX(10px);
+            text-decoration: none;
+        }
+
+        .social-link i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-link span {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Social Media Brand Colors */
+        .social-link.twitter:hover {
+            background: #1DA1F2;
+            color: white;
+        }
+
+        .social-link.linkedin:hover {
+            background: #0077B5;
+            color: white;
+        }
+
+        .social-link.medium:hover {
+            background: #00AB6C;
+            color: white;
+        }
+
+        .social-link.instagram:hover {
+            background: #E1306C;
+            color: white;
+        }
+
+        .social-link.email:hover {
+            background: #EA4335;
+            color: white;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Form Control Styling */
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+            border-color: #86b7fe;
+        }
+
+        .dark-theme .form-control {
+            background-color: #2d2d2d;
+            border-color: #404040;
+            color: #ffffff;
+        }
+
+        .dark-theme .form-control:focus {
+            background-color: #2d2d2d;
+            border-color: #86b7fe;
+            color: #ffffff;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .social-links {
+                gap: 0.5rem;
+            }
+            
+            .social-link {
+                padding: 1rem;
+            }
+            
+            .social-link i {
+                font-size: 1.25rem;
+            }
+            
+            .social-link span {
+                font-size: 1rem;
+            }
+        }
+
+        /* Add GitHub hover style */
+        .social-link.github:hover {
+            background: #333;
+            color: white;
+        }
+
+        /* Ensure footer text is white */
+        footer {
+            color: #ffffff !important;
+        }
+
+        footer p {
+            color: #ffffff !important;
+        }
+
+        /* Add styles for CV link */
+        .nav-link[download] {
+            color: #0d6efd;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link[download]:hover {
+            color: #0a58ca;
+            transform: translateY(-2px);
+        }
+
+        .dark-theme .nav-link[download] {
+            color: #4dabf7;
+        }
+
+        .dark-theme .nav-link[download]:hover {
+            color: #74c0fc;
+        }
+
+        /* About Section Styling */
+        .about-content {
+            padding: 1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .about-content i {
+            vertical-align: middle;
+        }
+
+        /* Card Styling */
+        .card {
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Image Styling */
+        .img-fluid {
+            border: 4px solid #f8f9fa;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-radius: 8px; /* Add slight rounded corners instead of circle */
+        }
+
+        .img-fluid:hover {
+            transform: scale(1.05);
+        }
+
+        .dark-theme .img-fluid {
+            border-color: #2d2d2d;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .col-md-4 {
+                margin-bottom: 2rem;
+            }
+            
+            .about-content {
+                padding: 0.5rem;
+                /* border: 2px solid red; */
+                font-size: 6px;
+            }
+            
+            .img-fluid {
+                max-width: 200px !important;
+            }
+        }
+
+        /* Contact Form Responsive Styles */
+        @media (max-width: 768px) {
+            .form-label {
+                font-size: 0.9rem;
+            }
+            
+            .form-label i {
+                font-size: 0.9rem;
+            }
+            
+            .form-control {
+                font-size: 0.9rem;
+                padding: 0.6rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-label {
+                font-size: 0.85rem;
+            }
+            .about-content {
+                /* border: 2px solid red; */
+                font-size: small;
+            }
+            
+            .form-label i {
+                font-size: 0.85rem;
+            }
+            
+            .form-control {
+                font-size: 0.85rem;
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .form-label {
+                font-size: 0.8rem;
+            }
+            
+            .form-label i {
+                font-size: 0.8rem;
+            }
+            
+            .form-control {
+                font-size: 0.8rem;
+                padding: 0.4rem;
+            }
+        }
+
+        /* About Section Text Responsive Styles */
+        @media (max-width: 768px) {
+            .about-content p {
+                font-size: 0.8rem;
+            }
+            
+            .about-content i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-content p {
+                font-size: 0.7rem;
+            }
+            
+            .about-content i {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .about-content p {
+                font-size: 0.65rem;
+            }
+            
+            .about-content i {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Snake-like cursor movement
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursor = document.getElementById('watermark-cursor');
+            const trailCount = 10;
+            const trails = [];
+
+            // Create trail elements
+            for (let i = 0; i < trailCount; i++) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                document.body.appendChild(trail);
+                trails.push({
+                    element: trail,
+                    x: 0,
+                    y: 0
+                });
+            }
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animate() {
+                // Update cursor position with smooth movement
+                const dx = mouseX - cursorX;
+                const dy = mouseY - cursorY;
+                cursorX += dx * 0.3;
+                cursorY += dy * 0.3;
+
+                cursor.style.left =` ${cursorX}px`;
+                cursor.style.top = `${cursorY}px`;
+
+                // Update trail positions
+                let prevX = cursorX;
+                let prevY = cursorY;
+
+                trails.forEach((trail, index) => {
+                    const trailX = prevX;
+                    const trailY = prevY;
+                    prevX = trail.x;
+                    prevY = trail.y;
+
+                    trail.x += (trailX - trail.x) * 0.3;
+                    trail.y += (trailY - trail.y) * 0.3;
+
+                    trail.element.style.left =` ${trail.x}px`;
+                    trail.element.style.top = `${trail.y}px`;
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+
+    <script>
+        // Intersection Observer for Section Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scroll behavior
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
